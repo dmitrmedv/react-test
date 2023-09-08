@@ -3,25 +3,45 @@ const { Component } = require('react');
 
 class ChekedForm extends Component {
   state = {
-    check: true,
+    level: '',
   };
 
-  handleCheck = () => {
-    this.setState(prevState => ({
-      check: !prevState.check,
-    }));
+  handleCheck = ({ target: { value } }) => {
+    this.setState({
+      level: value,
+    });
   };
 
   render() {
     return (
       <>
-        <label className={css.box}>
-          radio buttons
-          <input type="checkbox" name="test" onChange={this.handleCheck} />
+        <label>
+          <input
+            type="radio"
+            onChange={this.handleCheck}
+            value="junior"
+            checked={this.state.level === 'junior'}
+          />
+          Junior
         </label>
-        <button type="button" disabled={this.state.check}>
-          SUBMIT
-        </button>
+        <label>
+          <input
+            type="radio"
+            onChange={this.handleCheck}
+            value="middle"
+            checked={this.state.level === 'middle'}
+          />
+          Middle
+        </label>
+        <label>
+          <input
+            type="radio"
+            onChange={this.handleCheck}
+            value="senior"
+            checked={this.state.level === 'senior'}
+          />
+          Senior
+        </label>
       </>
     );
   }
