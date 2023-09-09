@@ -3,44 +3,29 @@ const { Component } = require('react');
 
 class ChekedForm extends Component {
   state = {
-    level: '',
+    age: '',
   };
 
   handleCheck = ({ target: { value } }) => {
     this.setState({
-      level: value,
+      age: value,
     });
   };
 
   render() {
+    const { age } = this.state;
     return (
       <>
         <label>
-          <input
-            type="radio"
-            onChange={this.handleCheck}
-            value="junior"
-            checked={this.state.level === 'junior'}
-          />
-          Junior
-        </label>
-        <label>
-          <input
-            type="radio"
-            onChange={this.handleCheck}
-            value="middle"
-            checked={this.state.level === 'middle'}
-          />
-          Middle
-        </label>
-        <label>
-          <input
-            type="radio"
-            onChange={this.handleCheck}
-            value="senior"
-            checked={this.state.level === 'senior'}
-          />
-          Senior
+          Choose your age
+          <select name="age" value={age} onChange={this.handleCheck}>
+            <option value="" disabled>
+              ...
+            </option>
+            <option value="18-25">18-25</option>
+            <option value="26-35">26-35</option>
+            <option value="36+">36+</option>
+          </select>
         </label>
       </>
     );
