@@ -1,3 +1,4 @@
+
 import { Link } from 'react-router-dom';
 
 export const Header = () => {
@@ -5,13 +6,13 @@ export const Header = () => {
     <div>
       <ul>
         <li>
-          <Link>Home</Link>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <Link>List</Link>
+          <Link to="list">List</Link>
         </li>
         <li>
-          <Link>Help</Link>
+          <Link to="products">Products</Link>
         </li>
       </ul>
     </div>

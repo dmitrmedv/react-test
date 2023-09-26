@@ -1,9 +1,10 @@
+import { Header } from 'components/Header/Header';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
 const LayOut = () => {
   return <>
-  <div>HEADER</div>
+  <Header/>
   <Outlet />
   <div>FOTTER</div>
   </>;
