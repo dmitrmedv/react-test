@@ -47,5 +47,6 @@ tbody td:nth-child(2) {
 
 tbody tr:hover {
   background-color: #4eae51;
+  color: #fff;
   cursor: pointer;
 }
