@@ -16,7 +16,7 @@ export const TransactionHistory = ({ items }) => {
           return (
             <tr key={id}>
               <td>{type}</td>
-              <td>{amount}</td>
+              <td>{amount} грн.</td>
               <td>{currency}</td>
             </tr>
           );
