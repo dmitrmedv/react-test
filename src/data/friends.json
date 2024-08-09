@@ -8,13 +8,13 @@
   {
     "avatar": "https://cdn-icons-png.flaticon.com/512/616/616438.png",
     "name": "Kiwi",
-    "isOnline": false,
+    "isOnline": true,
     "id": 1137
   },
   {
     "avatar": "https://cdn-icons-png.flaticon.com/512/1623/1623681.png",
     "name": "Ajax",
-    "isOnline": true,
+    "isOnline": false,
     "id": 1213
   },
   {
