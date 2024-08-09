@@ -7,6 +7,7 @@ import { TransactionHistory } from './TransactionHistory/TransactionHistory';
 import { Counter } from './Counter/Counter';
 import { Component } from 'react';
 import { Modal } from './Modal/Modal';
+import { ToDoList } from './ToDoList/ToDoList';
 
 export class App extends Component {
   state = {
@@ -15,8 +16,8 @@ export class App extends Component {
   };
 
   toggleModal = () => {
-    this.setState(prevState => {
-      return { showModal: !prevState.showModal };
+    this.setState(({ showModal }) => {
+      return { showModal: !showModal };
     });
   };
 
@@ -27,6 +28,7 @@ export class App extends Component {
         <FriendList friends={friends} />
         <TransactionHistory items={transactions} />
         <Counter />
+        <ToDoList />
         {this.state.showModal && <Modal toggleModal={this.toggleModal} />}
       </>
     );
