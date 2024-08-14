@@ -26,7 +26,7 @@ export class CheckBox extends Component {
   render() {
     return (
       <form action="" className={css.checkForm}>
-        <label htmlFor="1" className={this.state.stovg ? css.add : ''}>
+        <label htmlFor="1" className={this.state.stovg ? css.add : css.item}>
           СТОВГ
           <input
             type="checkbox"
@@ -37,7 +37,7 @@ export class CheckBox extends Component {
             name="stovg"
           />
         </label>
-        <label htmlFor="2" className={this.state.abon ? css.add : ''}>
+        <label htmlFor="2" className={this.state.abon ? css.add : css.item}>
           Абонвідділ
           <input
             type="checkbox"
@@ -48,7 +48,7 @@ export class CheckBox extends Component {
             name="abon"
           />
         </label>
-        <label htmlFor="3" className={this.state.skbsg ? css.add : ''}>
+        <label htmlFor="3" className={this.state.skbsg ? css.add : css.item}>
           СКПЛГ
           <input
             type="checkbox"
@@ -59,7 +59,7 @@ export class CheckBox extends Component {
             name="skbsg"
           />
         </label>
-        <label htmlFor="4" className={this.state.skpga ? css.add : ''}>
+        <label htmlFor="4" className={this.state.skpga ? css.add : css.item}>
           СКПГА
           <input
             type="checkbox"
