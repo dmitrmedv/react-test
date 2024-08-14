@@ -8,6 +8,7 @@ import { Counter } from './Counter/Counter';
 import { Component } from 'react';
 import { Modal } from './Modal/Modal';
 import { ToDoList } from './ToDoList/ToDoList';
+import { CheckBox } from './CheckBox/CheckBox';
 
 export class App extends Component {
   state = {
@@ -30,6 +31,7 @@ export class App extends Component {
         <Counter />
         <ToDoList />
         {this.state.showModal && <Modal toggleModal={this.toggleModal} />}
+        <CheckBox />
       </>
     );
   }
