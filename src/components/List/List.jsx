@@ -1,4 +1,4 @@
-import css from './List.module.css';
+// import css from './List.module.css';
 
 export const List = ({ list }) => {
   return (
