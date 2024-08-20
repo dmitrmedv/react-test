@@ -1,37 +1,48 @@
-.item {
-  cursor: pointer;
-  width: 100%;
+.form {
+  width: 400px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0px 1px 9px 2px rgba(34, 60, 80, 0.43);
-  padding: 5px;
-  border-radius: 5px;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid #dfdfdf;
 }
 
-.status {
+.label {
+  color: #bebebe;
+  margin-left: 10px;
+}
+
+.input {
+  color: #5f5f5f;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  font-size: 25px;
+  outline: none;
+  background-color: transparent;
+  border-bottom: 2px solid #dfdfdf;
+}
+
+.input:focus {
+  color: #63a4e4;
+  border-bottom: 2px solid #63a4e4;
+}
+
+.button {
+  margin-left: auto;
+  cursor: pointer;
   display: block;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-}
-
-.online {
-  composes: status;
-  background-color: #4eae51;
-}
-
-.offline {
-  composes: status;
-  background-color: #fc544e;
-}
-
-.avatar {
-  padding: 5px;
+  width: 150px;
+  height: 40px;
+  background-color: #61a3e4;
+  border: none;
   border-radius: 5px;
-  outline: 1px solid black;
-}
-.name {
-  font-size: larger;
-  font-weight: bold;
+  color: #fff;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  font-size: 15px;
 }

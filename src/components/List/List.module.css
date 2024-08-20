@@ -1,0 +1,58 @@
+table {
+  width: 100%;
+  border-collapse: collapse; /* Вимикаємо проміжки між комірками */
+  margin: 20px 0;
+  font-size: 18px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th,
+td {
+  padding: 12px 15px; /* Низ комірок з легким сірим кольором */
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #5f9eda;
+  /* font-weight: bold; */
+  text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9; /* Альтернативний колір для парних рядків */
+}
+
+tr:hover {
+  background-color: #f1f1f1; /* Колір при наведенні миші */
+}
+
+td {
+  color: #555;
+  /* border: 1px solid #ddd; */
+}
+
+thead {
+  background-color: #007bff; /* Блакитний заголовок таблиці */
+  color: white;
+}
+
+tbody {
+  outline: 1px solid red;
+  height: 200px;
+  overflow-y: scroll;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

@@ -1,38 +1,30 @@
-import user from '../data/user.json';
-import friends from '../data/friends.json';
-import transactions from '../data/transactions.json';
-import { FriendList } from './FriendList/FriendList';
-import { Profile } from './Profile/Profile';
-import { TransactionHistory } from './TransactionHistory/TransactionHistory';
-import { Counter } from './Counter/Counter';
 import { Component } from 'react';
-import { Modal } from './Modal/Modal';
-import { ToDoList } from './ToDoList/ToDoList';
-import { CheckBox } from './CheckBox/CheckBox';
+import { ToDo } from './ToDo/ToDo';
+import { List } from './List/List';
+import { Search } from './Search/Search';
+import css from './App.module.css';
 
 export class App extends Component {
   state = {
-    showModal: false,
-    count: 1,
+    letters: [],
+    filter: '',
   };
 
-  toggleModal = () => {
-    this.setState(({ showModal }) => {
-      return { showModal: !showModal };
+  handleAddLetter = newLetter => {
+    this.setState(prevState => {
+      return { letters: [newLetter, ...prevState.letters] };
     });
   };
 
   render() {
     return (
-      <>
-        <Profile user={user} toggleModal={this.toggleModal} />
-        <FriendList friends={friends} />
-        <TransactionHistory items={transactions} />
-        <Counter />
-        <ToDoList />
-        {this.state.showModal && <Modal toggleModal={this.toggleModal} />}
-        <CheckBox />
-      </>
+      <div className={css.container}>
+        <ToDo addItem={this.handleAddLetter} />
+        <div className={css.infoBlock}>
+          <Search />
+          <List list={this.state.letters} />
+        </div>
+      </div>
     );
   }
 }
