@@ -1,8 +1,8 @@
-// import css from './List.module.css';
+import css from './List.module.css';
 
 export const List = ({ list }) => {
   return (
-    <table>
+    <table className={css.table}>
       <thead>
         <tr>
           <th>Адреса</th>
