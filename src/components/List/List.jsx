@@ -1,10 +1,6 @@
 import css from './List.module.css';
 
-export const List = ({ list }) => {
-  function handleShowId(e) {
-    console.dir(e.currentTarget.dataset.id);
-  }
-
+export const List = ({ list, handleDeleteLetter, handlerComplited }) => {
   return (
     <table className={css.table}>
       <thead>
@@ -15,13 +11,27 @@ export const List = ({ list }) => {
         </tr>
       </thead>
       <tbody>
-        {list.map(({ id, userName, address }) => {
+        {list.map(({ id, userName, address, complited }) => {
           return (
-            <tr key={id} data-id={id} onClick={handleShowId}>
+            <tr
+              key={id}
+              className={complited ? css.complited : css.nonComplited}
+            >
               <td>{address}</td>
               <td>{userName}</td>
               <td>
-                <button type="button">Видалити</button>
+                <button
+                  type="button"
+                  disabled={!complited}
+                  onClick={() => handleDeleteLetter(id)}
+                >
+                  Видалити
+                </button>
+                <input
+                  type="checkbox"
+                  checked={complited}
+                  onChange={() => handlerComplited(id)}
+                />
               </td>
             </tr>
           );

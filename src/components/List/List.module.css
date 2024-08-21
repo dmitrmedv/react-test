@@ -1,44 +1,16 @@
-.table {
-  position: relative;
+table {
   border-collapse: collapse;
-  table-layout: fixed;
-}
-
-.thead {
 }
 
 th,
 td {
-  width: 250px; /* або використовуйте відсотки */
-  /* white-space: nowrap; */
+  padding: 15px;
+  border: 1px solid black;
 }
 
-td {
-  padding: 10px;
-  text-align: left;
-  border-right: 1px solid gray;
-  border-bottom: 1px solid gray;
+.complited {
+  background-color: #5aeb96;
 }
-
-th {
-  background-color: #61a3e4;
-}
-
-tr:nth-child(even) {
-  background-color: #dcdcdc;
-}
-
-tr:hover {
-  background-color: #94ec72;
-  cursor: pointer;
-}
-
-thead {
-}
-
-tbody {
-  /* position: fixed; */
-  position: absolute;
-  height: 500px;
-  overflow-y: auto;
+.nonComplited {
+  background-color: #eb6b5a;
 }

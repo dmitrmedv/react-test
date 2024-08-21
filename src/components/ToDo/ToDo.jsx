@@ -5,6 +5,8 @@ import { nanoid } from 'nanoid';
 const INITIAL_STATE = {
   address: '',
   userName: '',
+  complited: false,
+  id: nanoid(),
 };
 
 export class ToDo extends Component {
@@ -12,7 +14,7 @@ export class ToDo extends Component {
 
   handleChange = e => {
     const { name, value } = e.target;
-    this.setState({ [name]: value, id: nanoid() });
+    this.setState({ [name]: value });
   };
 
   handleSubmit = e => {
