@@ -11,6 +11,7 @@ export const List = ({ list }) => {
         <tr>
           <th>Адреса</th>
           <th>Замовник</th>
+          <th>Видалення</th>
         </tr>
       </thead>
       <tbody>

@@ -1,9 +1,16 @@
 .table {
   position: relative;
   border-collapse: collapse;
+  table-layout: fixed;
 }
 
 .thead {
+}
+
+th,
+td {
+  width: 250px; /* або використовуйте відсотки */
+  /* white-space: nowrap; */
 }
 
 td {
@@ -15,7 +22,6 @@ td {
 
 th {
   background-color: #61a3e4;
-  min-width: 250px;
 }
 
 tr:nth-child(even) {
