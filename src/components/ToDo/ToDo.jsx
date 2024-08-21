@@ -35,9 +35,9 @@ export class ToDo extends Component {
           type="text"
           className={css.input}
           id="id-1"
-          name="address"
+          name="userName"
           onChange={this.handleChange}
-          value={this.state.address}
+          value={this.state.userName}
         />
         <label className={css.label} htmlFor="id-2">
           Адреса
@@ -46,9 +46,9 @@ export class ToDo extends Component {
           type="text"
           className={css.input}
           id="id-2"
-          name="userName"
+          name="address"
           onChange={this.handleChange}
-          value={this.state.userName}
+          value={this.state.address}
         />
         <button type="submit" className={css.button}>
           Зареєструвати
