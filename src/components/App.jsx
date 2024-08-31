@@ -3,86 +3,109 @@ import { ToDo } from './ToDo/ToDo';
 import { List } from './List/List';
 import { Search } from './Search/Search';
 import css from './App.module.css';
+import { Modal } from './Modal/Modal';
+import axios from 'axios';
 
 export class App extends Component {
   state = {
-    letters: [
-      {
-        id: '1',
-        address: 'Дерибасівська 10',
-        userName: 'Мішка Япончик',
-        complited: false,
-      },
-      {
-        id: '2',
-        address: 'Троїцька 12',
-        userName: 'Льова Артеллерист',
-        complited: false,
-      },
-      {
-        id: '3',
-        address: 'Рішельєвська 8',
-        userName: 'Моня Рижий',
-        complited: false,
-      },
-      {
-        id: '4',
-        address: 'Канатна 77',
-        userName: 'Сонька Вінницька',
-        complited: false,
-      },
-      {
-        id: '5',
-        address: 'Балківська 44',
-        userName: 'Фройм Грач',
-        complited: false,
-      },
-    ],
+    letters: [],
     filterQuery: '',
+    showModal: false,
+    genService: '',
+    services: [],
   };
 
-  handleDeleteLetter = id => {
+  async componentDidMount() {
+    try {
+      const { data } = await axios.get('http://localhost:3000/letters');
+      this.setState({ letters: data });
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
+
+  toggleModal = () => {
     this.setState(prevState => {
       return {
-        letters: prevState.letters.filter(item => item.id !== id),
+        showModal: !prevState.showModal,
       };
     });
+  };
+
+  handleDeleteLetter = async id => {
+    try {
+      await axios.delete(`http://localhost:3000/letters/${id}`);
+      this.setState(prevState => {
+        return {
+          letters: prevState.letters.filter(letter => letter.id !== id),
+        };
+      });
+    } catch (error) {
+      console.error('Error deleting letter:', error);
+    }
   };
 
   handleFilter = query => {
     this.setState({ filterQuery: query });
   };
 
-  handleAddLetter = newLetter => {
-    this.setState(prevState => {
-      return { letters: [newLetter, ...prevState.letters] };
-    });
+  handleAddLetter = async newLetter => {
+    try {
+      const { data } = await axios.post(
+        'http://localhost:3000/letters',
+        newLetter
+      );
+
+      this.setState(prevState => ({
+        letters: [...prevState.letters, data],
+      }));
+    } catch (error) {
+      console.log(error);
+    } finally {
+      this.toggleModal();
+    }
   };
 
-  handlerComplited = id => {
-    this.setState(prevStete => {
-      return {
-        letters: prevStete.letters.map(letter => {
-          if (letter.id === id) {
-            return { ...letter, complited: !letter.complited };
-          }
-          return letter;
-        }),
-      };
-    });
+  handlerComplited = async (id, status) => {
+    try {
+      await axios.patch(`http://localhost:3000/letters/${id}`, {
+        complited: !status,
+      });
+      this.setState(prevStete => {
+        return {
+          letters: prevStete.letters.map(letter => {
+            if (letter.id === id) {
+              return { ...letter, complited: !letter.complited };
+            }
+            return letter;
+          }),
+        };
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   render() {
     const { letters, filterQuery } = this.state;
     let normalizeQuery = filterQuery.toLowerCase();
-    let visibleItems = letters.filter(({ address }) =>
-      address.toLowerCase().includes(normalizeQuery)
+    let visibleItems = letters.filter(
+      ({ address, userName }) =>
+        address.toLowerCase().includes(normalizeQuery) ||
+        userName.toLowerCase().includes(normalizeQuery)
     );
     return (
       <div className={css.container}>
-        <ToDo addItem={this.handleAddLetter} />
+        {this.state.showModal && (
+          <Modal toggleModal={this.toggleModal}>
+            <ToDo addItem={this.handleAddLetter} />
+          </Modal>
+        )}
         <div className={css.infoBlock}>
-          <Search handleFilter={this.handleFilter} />
+          <Search
+            handleFilter={this.handleFilter}
+            toggleModal={this.toggleModal}
+          />
           <List
             list={visibleItems}
             handleDeleteLetter={this.handleDeleteLetter}

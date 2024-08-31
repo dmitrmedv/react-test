@@ -1,16 +1,17 @@
 import { Component } from 'react';
 import css from './ToDo.module.css';
 import { nanoid } from 'nanoid';
+import { GenService } from 'components/GenService/GenService';
 
 const INITIAL_STATE = {
   address: '',
   userName: '',
   complited: false,
-  id: nanoid(),
+  service: [],
 };
 
 export class ToDo extends Component {
-  state = INITIAL_STATE;
+  state = { ...INITIAL_STATE, id: nanoid() };
 
   handleChange = e => {
     const { name, value } = e.target;
@@ -20,7 +21,17 @@ export class ToDo extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.addItem(this.state);
-    this.setState(INITIAL_STATE);
+    this.setState({ ...INITIAL_STATE, id: nanoid() });
+  };
+
+  handleAddServ = e => {
+    const { value, checked } = e.target;
+
+    this.setState(prevState => ({
+      service: checked
+        ? [...prevState.service, value]
+        : prevState.service.filter(service => service !== value),
+    }));
   };
 
   render() {
@@ -52,6 +63,7 @@ export class ToDo extends Component {
           onChange={this.handleChange}
           value={this.state.address}
         />
+        <GenService handleAddServ={this.handleAddServ} />
         <button type="submit" className={css.button}>
           Зареєструвати
         </button>

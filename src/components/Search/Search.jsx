@@ -6,9 +6,15 @@ export class Search extends Component {
   };
   render() {
     return (
-      <form>
-        <input type="text" onChange={this.handleChange} />
-      </form>
+      <>
+        <button type="button" onClick={this.props.toggleModal}>
+          Додати
+        </button>
+
+        <form>
+          <input type="text" onChange={this.handleChange} />
+        </form>
+      </>
     );
   }
 }
