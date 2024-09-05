@@ -1,20 +1,17 @@
-import { Component } from 'react';
-
-export class Search extends Component {
-  handleChange = e => {
+export const Search = ({ toggleModal }) => {
+  const handleChange = e => {
     this.props.handleFilter(e.target.value);
   };
-  render() {
-    return (
-      <>
-        <button type="button" onClick={this.props.toggleModal}>
-          Додати
-        </button>
 
-        <form>
-          <input type="text" onChange={this.handleChange} />
-        </form>
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <button type="button" onClick={toggleModal}>
+        Додати
+      </button>
+
+      <form>
+        <input type="text" onChange={handleChange} />
+      </form>
+    </>
+  );
+};

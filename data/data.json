@@ -1,39 +1,12 @@
 {
   "letters": [
     {
-      "id": "KtNgBdWUskT_q23W9zaSX",
-      "address": "Масив 15 д. 3/14",
-      "userName": "Чорноморська газова компанія",
-      "complited": false,
-      "service": [
-        "ВТВ"
-      ]
-    },
-    {
-      "id": "-yfb2q-jQFJVYp9P8O0J2",
-      "address": "Польський узвіз, 44",
-      "userName": "Полуніна А.В.",
-      "complited": false,
-      "service": [
-        "СКПГА"
-      ]
-    },
-    {
       "id": "cDmxC3m2met_gxa0vULmg",
       "address": "Пушкіна 66",
       "userName": "Довлатов С.Д.",
-      "complited": false,
+      "complited": true,
       "service": [
         "СВіП"
-      ]
-    },
-    {
-      "id": "zrMXtUOaX0fvCQ3UGY7E7",
-      "address": "фвлоисфволсилв",
-      "userName": "дотвдофдвсф",
-      "complited": false,
-      "service": [
-        "СТОВГ"
       ]
     }
   ]
