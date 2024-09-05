@@ -5,9 +5,7 @@
       "address": "Пушкіна 66",
       "userName": "Довлатов С.Д.",
       "complited": true,
-      "service": [
-        "СВіП"
-      ]
+      "service": ["СВіП"]
     }
   ]
 }
