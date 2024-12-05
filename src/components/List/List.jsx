@@ -1,66 +1,59 @@
-import css from './List.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeTodo, toggleComplete } from 'redux/operations';
+import { selectorFilterComplite, selectorFilterQuery } from 'redux/todoSlice';
 
-export const List = ({ list }) => {
-  if (list) {
-    return (
-      <>
-        <table className={css.table}>
-          <thead>
-            <tr>
-              <th>вхідний №</th>
-              <th>Дата</th>
-              <th>Адреса</th>
-              {/* <th>прізвище, ім’я, по батькові (найменування)</th> */}
-              <th>суть питання</th>
-              <th>виконавець (головний)</th>
-              {/* <th>виконавець (інші)</th> */}
-              <th>інша інформація</th>
-              {/* <th>тип споживача </th>
-              <th>Предмет звернення</th> */}
-            </tr>
-          </thead>
-          <tbody>
-            {list.map(
-              ({
-                innerNumber,
-                incominпDate,
-                sender,
-                address,
-                essence,
-                executor,
-                overExecutors,
-                overInfo,
-                // type,
-                // typeOfSender,
-              }) => (
-                <tr key={innerNumber}>
-                  <td className={css.number}>{innerNumber + 'к'}</td>
-                  <td className={css.date}>{incominпDate}</td>
-                  <td className={css.addres}>
-                    <p>{address}</p>
-                    <p>{sender}</p>
-                  </td>
-                  {/* <td className={css.sender}>{sender}</td> */}
-                  <td className={css.essence}>{essence}</td>
-                  <td className={css.executor}>
-                    <p>{executor}</p>
-                    <p className={css.executors}>
-                      {overExecutors ? overExecutors.join(', ') : ''}
-                    </p>
-                  </td>
-                  {/* <td className={css.executor}>
-                    {overExecutors ? overExecutors.join(', ') : '-'}
-                  </td> */}
-                  <td className={css.info}>{overInfo}</td>
-                  {/* <td className={css.type}>{type}</td>
-                  <td className={css.typeOf}>{typeOfSender}</td> */}
-                </tr>
-              )
-            )}
-          </tbody>
-        </table>
-      </>
-    );
+const List = () => {
+  const todos = useSelector(state => state.todos.todos);
+  const isLoading = useSelector(state => state.todos.isLoading);
+  const filterValue = useSelector(selectorFilterComplite);
+  const filterQuery = useSelector(selectorFilterQuery);
+  const dispatch = useDispatch();
+
+  let visibleList = todos.filter(item =>
+    item.name.toLowerCase().includes(filterQuery.toLowerCase())
+  );
+
+  switch (filterValue) {
+    case 'completed':
+      visibleList = visibleList.filter(item => item.complete);
+      break;
+
+    case 'not completed':
+      visibleList = visibleList.filter(item => !item.complete);
+      break;
+
+    default:
+      break;
   }
-  return;
+
+  return (
+    <>
+      {isLoading && <p>...isLoading</p>}
+      {visibleList.length > 0 ? (
+        <ul>
+          {visibleList.map(({ name, id, complete }) => (
+            <li key={id}>
+              <p>{name}</p>
+              <input
+                type="checkbox"
+                checked={complete}
+                onChange={() => dispatch(toggleComplete({ id, complete }))}
+              />
+              <button
+                type="button"
+                onClick={() => dispatch(removeTodo(id))}
+                disabled={!complete}
+              >
+                remove
+              </button>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>Список пустий</p>
+      )}
+    </>
+  );
 };
+
+export default List;

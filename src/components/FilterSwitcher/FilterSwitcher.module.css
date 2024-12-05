@@ -1,0 +1,22 @@
+.button {
+  width: 120px;
+  padding: 5px;
+  outline: 1px solid black;
+  cursor: pointer;
+  text-align: center;
+}
+
+.input:checked + .button {
+  background-color: #e28282;
+  color: white;
+}
+
+.input {
+  display: none;
+}
+
+.formSwitcher {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}

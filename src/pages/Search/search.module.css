@@ -1,0 +1,12 @@
+.serchWrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding-top: 10px;
+}
+
+.listWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}

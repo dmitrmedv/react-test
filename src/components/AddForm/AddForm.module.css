@@ -1,0 +1,19 @@
+.form {
+  outline: 1px solid green;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 300px;
+}
+
+.form input {
+  padding: 5px;
+}
+
+.subbmitButton {
+  display: block;
+  width: 50%;
+  margin: 10px auto 0 auto;
+  cursor: pointer;
+}

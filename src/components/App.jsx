@@ -1,22 +1,33 @@
-import { useEffect, useState } from 'react';
-import { List } from './List/List';
-import axios from 'axios';
+import { Route, Routes } from 'react-router-dom';
+import SharedLayout from './SharedLayout/SharedLayout';
+import Home from 'pages/Home/Home';
+import Search from 'pages/Search/Search';
+import Info from 'pages/Info/Info';
+import Card from './Card/Card';
+import Counter from 'pages/Counter/Counter';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchTodos } from 'redux/operations';
 
 export const App = () => {
-  const [list, setList] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchList = async () => {
-      try {
-        const { data } = await axios.get('http://localhost:3000/letters');
-        setList(data);
-        // console.log(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchList();
-  }, []);
+    dispatch(fetchTodos());
+  }, [dispatch]);
 
-  return <>{<List list={list}></List>}</>;
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<Home />} />
+          <Route path="search" element={<Search />}>
+            <Route index path=":id" element={<Card />} />
+          </Route>
+          <Route path="info" element={<Info />} />
+          <Route path="counter" element={<Counter />} />
+        </Route>
+      </Routes>
+    </>
+  );
 };
