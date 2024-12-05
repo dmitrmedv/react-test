@@ -19,12 +19,6 @@ const slice = createSlice({
     changeCompleteFilter: (state, action) => {
       state.filterComplite = action.payload;
     },
-    // toggleComplete: (state, action) => {
-    //   const todo = state.todos.find(item => item.id === action.payload);
-    //   if (todo) {
-    //     todo.complete = !todo.complete;
-    //   }
-    // },
   },
   extraReducers: builder => {
     builder

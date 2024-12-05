@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { fetchTodos } from './operations';
 
 export const initialState = {
   counter: 0,
